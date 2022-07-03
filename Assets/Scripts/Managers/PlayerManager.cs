@@ -1,6 +1,7 @@
 using Data.ValueObject;
 using UnityEngine;
 using Controllers;
+using Signals;
 
 namespace Managers
 {
@@ -17,7 +18,38 @@ namespace Managers
         
         #endregion
 
-        private Rigidbody _rigidbody;
+
+        #region EventSubscription
+        
+        private void OnEnable()
+        {
+            SubscribeEvents();
+        }
+
+        private void SubscribeEvents()
+        {
+            InputSignals.Instance.onInputTaken += ActivateMovement;
+        }
+
+        private void UnsubscribeEvents()
+        {
+            
+            InputSignals.Instance.onInputTaken -= ActivateMovement;
+        }
+
+        private void OnDisable()
+        {
+            UnsubscribeEvents();
+        }
+        #endregion
+
+
+
+        void ActivateMovement()
+        {
+            movementController.EnableMovement();
+        }
+
     }
 }
 

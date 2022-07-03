@@ -1,11 +1,11 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Data.ValueObject
 {
     [Serializable]
     public class InputData
     {
-        public float Horizontal;
-        public float Vertical;
+        public Vector2 InputValues;
     }
 }

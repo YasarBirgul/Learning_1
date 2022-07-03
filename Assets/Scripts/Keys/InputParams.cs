@@ -1,9 +1,10 @@
 ﻿using System.Xml.Schema;
+using UnityEngine;
 
 namespace Keys
 {
     public struct InputParams
     {
-        public float XValue, YValue;
+        public Vector2 values;
     }
 }
